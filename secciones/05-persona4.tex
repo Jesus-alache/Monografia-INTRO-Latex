@@ -1,12 +1,86 @@
 \section{Diagnóstico: La brecha digital peruana}
-\subsection{Datos oficiales verificados — INEI y OSIPTEL 2024–2025}
-\subsection{El problema estructural: Geografía y dispersión}
-\subsection{El costo económico de la brecha}
+
+El escenario de las telecomunicaciones en el Perú se caracteriza por una pronunciada brecha digital que segmenta el acceso a internet entre los centros urbanos y las zonas de difícil acceso. 
+Mientras que las grandes ciudades experimentan una transición hacia redes de alta velocidad, las áreas rurales enfrentan una carencia crítica de conectividad debido a la inviabilidad logística de expandir las redes terrestres. 
+Esta desigualdad no solo limita el desarrollo de servicios digitales esenciales, sino que evidencia la necesidad de adoptar soluciones tecnológicas alternativas. 
+
+\subsection{Datos oficiales verificados — INEI 2025}
+
+Para dimensionar la magnitud actual de la brecha digital y el estado de las telecomunicaciones en el Perú, es fundamental recurrir a los indicadores estadísticos más recientes. 
+De acuerdo con los reportes oficiales emitidos por el Instituto Nacional de Estadística e Informática (INEI) durante el 2025, se evidencia el estado real de la infraestructura de red a nivel nacional. 
+Tal como se detalla en la Figura 1, la proporción de conectividad en zonas rurales frente a las urbanas refleja una diferencia significativa que pueden posicionar al internet satelital como solución.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.7\textwidth]{imagenes/brecha1.png}
+    \caption{\small\textit{Hogares con acceso a Computadora e Internet, por área de residencia (2025)}}
+    \label{fig:brecha_digital1}
+\end{figure}
+
+Según los reportes del Instituto Nacional de Estadística e Informática (INEI), existe una disparidad estructural en el acceso a la red que está directamente condicionada por la geografía. 
+Tal como se detalla en la Figura 2, al evaluar a la población de 6 y más años de edad que hace uso de internet, se evidencian contrastes críticos entre la capital y las zonas alejadas del país. 
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.8\textwidth]{imagenes/brecha2.png}
+    \caption{\small\textit{Población de 6 y más años de edad que hace uso de Internet, por área de residencia (2025)}}
+    \label{fig:brecha_digital2}
+\end{figure}
+
 \section{Marco legal peruano}
-\subsection{Concesión a Starlink, decretos legislativos y proyectos de ley}
+
+
+
+
+\subsection{Decretos legislativos, proyectos de ley y concesión a Starlink}
+
+
+
 \section{Implementación en el Perú}
+
+El desarrollo de las estaciones portátiles terrestres ha experimentado una aceleración notable, impulsada por avances significativos en el rendimiento y la eficiencia de las redes satelitales. 
+En la actualidad, la creciente demanda por estas conexiones ha motivado a empresas como SpaceX a introducir innovaciones disruptivas en sus constelaciones y centros de control. 
+En el caso peruano, la implementación de estos servicios tanto a través de operadores de órbita geoestacionaria como HughesNet, como mediante nuevas constelaciones de órbita baja a través de la 
+reciente alianza Entel-Starlink ha comenzado a transformar el panorama de las telecomunicaciones, focalizando sus beneficios en zonas remotas y de difícil acceso donde la conectividad tradicional es escasa o nula.
+
 \subsection{Starlink residencial}
+
+La conexión Starlink representa un cambio de paradigma en la arquitectura de redes de telecomunicaciones disponibles en el Perú. 
+Aparece como una alternativaviable para reducir la brecha digital. 
+Su sistema de satélites en órbita baja (LEO) permite ofrecer conexión de
+banda ancha en zonas donde las redes terrestres como la fibra óptica no son técnica ni económicamente
+factibles.
+En el contexto geográfico peruano, la implementación de estos terminales equipados con antenas de arreglo en fase permite 
+establecer enlaces de alta velocidad en zonas rurales, sentando las bases para aplicaciones más exigentes como el edge computing y la optimización mediante protocolos avanzados. 
+
+\subsubsection{Características, costos y planes}
+
+Las características de la red Starlink se fundamentan en su adaptabilidad a distintos escenarios de despliegue. 
+Para las implementaciones residenciales en áreas rurales, la arquitectura satelital proporciona una conectividad estable que supera las barreras geográficas de las redes tradicionales, 
+alcanzando tasas de transferencia superiores a los 400 Mbps. 
+Por otro lado, a nivel de hardware, los terminales modernos se caracterizan por su diseño compacto y ultraportátil, lo que facilita el establecimiento del enlace en cuestión de minutos. 
+Esta infraestructura no solo permite la transmisión continua de datos en estaciones móviles, sino que también asegura un nivel de tolerancia a fallos significativo, manteniendo la estabilidad de la red durante desastres naturales o fluctuaciones severas del clima.
+
+Actualmente, Starlink ofrece diversas opciones de conectividad en Perú bajo sus modalidades Residencial e Itinerante. 
+Para el uso en el hogar, el plan Residencial tiene un costo de S/ 180 al mes, mientras que el plan Residencial Lite, diseñado para zonas con menor demanda o disponibilidad específica, se encuentra en S/ 150 al mes. 
+Si se requiere movilidad, el plan Itinerante cuenta con dos variantes: una opción de 100 GB por S/ 200 al mes y una alternativa de datos ilimitados por S/ 355 al mes, ambas ideales para nómades digitales o quienes requieren conexión en distintos puntos geográficos.
+Para necesidades profesionales, la categoría Empresas brinda opciones de Prioridad Local (S/ 125 a S/ 1,208) y Prioridad Global (S/ 990 a S/ 8,514), 
+las cuales incluyen IP pública, panel de gestión y un acuerdo de nivel de servicio (SLA) para garantizar mayor estabilidad en proyectos de alta demanda.
+
 \subsection{Alianza Entel-Starlink}
 \subsection{HughesNet como alternativa}
-\section{Ventajas y desventajas en el Perú}
+\section{Avances, obstáculos y perspectivas futuras en el Perú}
+
+A medida que se consolidan avances técnicos significativos para mejorar la latencia y la eficiencia de los enlaces LEO y GEO, 
+surgen obstáculos inherentes a las condiciones geográficas y meteorológicas extremas del país. En este sentido, resulta fundamental contrastar los beneficios tecnológicos actuales con las limitaciones físicas de los terminales en campo, 
+con el objetivo de proyectar escenarios futuros que determinen la verdadera sostenibilidad técnica y operativa de estos sistemas a nivel nacional. 
+
+\subsection{PEP y algoritmos TCP BBR en enlaces LEO/GEO rurales}
+
+
+
+\subsection{Edge Computing en zonas remotas}
+\subsection{Análisis energético y térmico de antenas de arreglo en fase a gran altitud}
+\subsection{Diseño y dimensionamiento de sistemas fotovoltaicos para terminales satelitales}
+\subsection{Atenuación por lluvia en la selva peruana: Comparativa entre antenas LEO y offset tradicionales}
 \section{Conclusiones}
