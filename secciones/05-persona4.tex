@@ -189,5 +189,17 @@ Mediante el Método de Elementos Finitos con Parámetros de Influencia Integral 
 
 \subsection{Atenuación por lluvia en la selva peruana: Comparativa entre antenas LEO y offset tradicionales}
 
+El clima de la Amazonía peruana, caracterizado por precipitaciones torrenciales que pueden superar los 100 mm/h, constituye uno de los entornos electromagnéticos más hostiles para las telecomunicaciones satelitales debido al fenómeno de atenuación por lluvia (Rain Fade). Este problema físico se produce porque las gotas de agua, cuyos diámetros oscilan entre 1 y 4 mm, poseen un tamaño comparable a la longitud de onda de las señales en banda Ku (~12 GHz) y banda Ka (~28 GHz). Al interactuar con el haz, las gotas absorben y dispersan la energía electromagnética, lo que provoca una caída drástica en la Relación Señal a Ruido ($SNR$). La gravedad de este impacto y la resiliencia del enlace dependen fundamentalmente de la arquitectura de la antena y de la órbita del satélite con el que se comunica.
+
+En las antenas tradicionales tipo Offset asociadas a satélites geoestacionarios (GEO), la mitigación de este fenómeno presenta serias limitaciones debido a su naturaleza estática. Al apuntar de manera inamovible a un punto fijo en el cinturón de Clarke a 35,786 km de distancia, el sistema no tiene capacidad de evadir físicamente las nubes convectivas densas que interceptan su línea de vista, absorbiendo toda la atenuación del trayecto. Además, la geometría cóncava del plato parabólico favorece la acumulación de agua y humedece el brazo del bloque de bajo ruido (LNB), formando una película líquida sobre el alimentador (feedhorn) que continúa absorbiendo microondas y degradando el $SNR$ incluso después de que la tormenta ha cesado.
+
+Por el contrario, las antenas de arreglo en fase empleadas para constelaciones de órbita terrestre baja (LEO) a ~550 km ofrecen una mayor resiliencia gracias a su direccionamiento electrónico del haz (beam steering). Al operar a una altitud drásticamente menor, la pérdida de propagación en el espacio libre ($L_{fspl}$) se reduce significativamente, lo que dota al sistema de un margen de enlace (Link Margin) robusto capaz de tolerar atenuaciones severas de hasta 15 dB que interrumpirían una conexión GEO. Asimismo, la movilidad de los satélites LEO permite realizar una conmutación dinámica (Handover); si una tormenta bloquea la trayectoria actual, el software de la antena redirige instantáneamente el haz hacia un satélite ubicado en una zona despejada del cielo. No obstante, la orientación casi vertical de estos paneles planos propicia la formación de una capa de agua sobre el radomo que distorsiona la fase electromagnética del haz, una vulnerabilidad física que los fabricantes mitigan en las versiones más recientes mediante diseños rectangulares inclinados que fuerzan el drenaje gravitacional.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.6\textwidth]{imagenes/leogeo.png}
+    \caption{\small\textit{Comparativa entre sistemas de antenas LEO y offset tradicionales.}}
+    \label{fig:leogeo}
+\end{figure}
 
 \section{Conclusiones}
