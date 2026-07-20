@@ -14,6 +14,17 @@ En cuanto a su funcionamiento, inicia mediante la solicitud del usuario desde un
 Una vez obtenida la información solicitada, la respuesta sigue el recorrido inverso: el servidor envía los datos a la estación terrestre, esta los retransmite al satélite y, finalmente, el satélite los envía al terminal del usuario mediante un enlace descendente (downlink). De esta manera, se completa el proceso de comunicación entre el usuario y la red. 
 
 \subsection{ Arquitectura del sistema de Internet satelital}
+\subsubsection{Arquitectura física}
+Generalmente, los equipos que integran el sistema de internet satelital se clasifican en 3 segmentos: usuario, terrestre y espacial; cada uno ejerce diferentes funciones y contribuyen a establecer la comunicación entre el usuario final y la red global de Internet. 
+
+El primero está conformado por los dispositivos y los terminales ubicados en las instalaciones del cliente (AllElectroHub, 2026), tales como computadoras, teléfonos o tabletas; el router, el módem satelital y la antena o terminal satelital, encargados de transmitir y recibir información hacia  y desde el satélite. 
+
+Por otra parte, el segmento terrestre incluye a los artefactos en la Tierra involucrados especialmente como puentes de comunicación, ya que conectan la red satelital con la global de internet; por ejemplo, las estaciones terrestres o gateways, instalaciones estratégicamente localizadas para mantener una comunicación continua con los satélites en órbita. Estas estaciones no solo transmiten y reciben señales, sino que también las procesan mediante equipos especializados, como amplificadores, moduladores, demoduladores, codificadores y decodificadores, garantizando una comunicación eficiente y confiable. Asimismo, este segmento integra antenas de alta ganancia y redes de telecomunicaciones, como la fibra óptica, los enlaces de microondas y las redes móviles, las cuales distribuyen la información proveniente del satélite hacia los usuarios finales. 
+
+El espacial abarca los satélites de comunicaciones y sus sistemas de transmisión, como antenas y transpondedores. Su función consiste en recibir las señales enviadas desde las estaciones terrestres o los terminales de usuario, amplificarlas o procesarlas y retransmitirlas hacia su destino, permitiendo el enlace entre el segmento del usuario y el segmento terrestre. Dependiendo del sistema implementado, estos satélites pueden operar en órbitas GEO, MEO o LEO, que serán analizadas en el apartado correspondiente. 
+
+Algunos autores también consideran al de control como cuarto segmento, el cual sería responsable de evaluar las condiciones del satélite y cerciorarse de que mantenga un rendimiento óptimo e intervenir si es que esto no sucede (Kohli, 2025). Está compuesto por los Centros de Operaciones de Red (NOC), especializados en las últimas funciones señaladas, además de la gestión del tráfico en una red satelital; las Estaciones de Telemetría, Seguimiento y Comando (TT&C), encargados de la recolección de información sobre factores internos y externos que afecten el estado del satélite, el seguimiento de la órbita en la que se encuentra y la automatización de tareas. 
+
 \subsection{ Importancia de la latencia como factor de rendimiento}
 \section{Evolución tecnológica}
 \subsection{Antecedentes de las comunicaciones satelitales}
