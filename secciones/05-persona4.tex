@@ -29,11 +29,12 @@ Tal como se detalla en la Figura 2, al evaluar a la población de 6 y más años
 
 \section{Marco legal peruano}
 
-
-
-
-\subsection{Decretos legislativos, proyectos de ley y concesión a Starlink}
-
+El marco jurídico peruano ha priorizado la reducción de la brecha digital mediante reformas de rango constitucional y legal. 
+En primer lugar, la Ley N° 31878 (2022) reformó el artículo 14-A de la Constitución Política, estableciendo que el Estado garantiza el acceso a internet libre en todo el territorio, con especial énfasis en las zonas rurales y comunidades campesinas y nativas. 
+Esta política se instrumentaliza con la Ley N° 31809 (2023), o "Ley para el fomento de un Perú conectado", cuyo reglamento (Decreto Supremo N° 003-2025-MTC), promulgado en marzo de 2025, busca asegurar una conectividad universal y de calidad en todo el país.
+Para materializar esta inclusión en zonas de difícil acceso geográfico, el Ministerio de Transportes y Comunicaciones (MTC) otorgó a Starlink Perú, mediante la Resolución Ministerial N° 362-2022-MTC/01.03, una concesión única de telecomunicaciones por 20 años. 
+Dicha resolución faculta a la empresa a brindar servicios de portador local, así como de larga distancia nacional e internacional. 
+Finalmente, para regular la participación de estos operadores globales en la economía interna, se promulgó el Decreto Legislativo N° 1623 (2024), el cual exige desde octubre de ese año que los proveedores digitales extranjeros no domiciliados apliquen el Impuesto General a las Ventas (IGV) a sus usuarios en el Perú.
 
 
 \section{Implementación en el Perú}
@@ -75,7 +76,21 @@ las cuales incluyen IP pública, panel de gestión y un acuerdo de nivel de serv
 \end{figure}
 
 \subsection{Alianza Entel-Starlink}
-\subsection{HughesNet como alternativa}
+
+La alianza estratégica entre Entel y Starlink ha introducido en el Perú la tecnología Direct-to-Cell (D2C), un avance que permite la transmisión directa de señales desde satélites de órbita baja (LEO) hacia terminales móviles comerciales sin necesidad de intermediarios terrestres. 
+Este proyecto, autorizado por el Ministerio de Transportes y Comunicaciones (MTC) mediante un espacio controlado de experimentación, permite el envío y recepción de SMS y el uso de aplicaciones compatibles en zonas donde no existe cobertura de red móvil terrestre, incluyendo áreas rurales dispersas, la selva, la sierra y hasta 200 millas náuticas dentro del mar peruano. 
+Para que esta tecnología sea efectiva, el usuario debe encontrarse al aire libre con línea de vista directa al cielo, permitiendo que el celular se conecte automáticamente a la red satelital de SpaceX cuando pierda la señal terrestre convencional.
+
+La adopción de esta conectividad exige requisitos técnicos específicos para garantizar la calidad del servicio, como contar con un equipo compatible, mantener el software del dispositivo actualizado y tener activadas las funciones de VoLTE y Roaming. 
+Comercialmente, el acceso a esta funcionalidad está estructurado a través de planes postpago desde S/ 29.90 para mensajería SMS satelital y desde S/ 59.90 para habilitar servicios de datos en aplicaciones compatibles. 
+Actualmente, el ecosistema de aplicaciones habilitadas para este entorno satelital incluye herramientas críticas para la comunicación, navegación y gestión de riesgos, tales como WhatsApp, Google Maps, X y AccuWeather, facilitando el uso de mensajes, notas de voz, fotos, videos y alertas meteorológicas.
+
+Esta tecnología D2C no solo representa una ventaja técnica, sino una herramienta de inclusión y seguridad fundamental. 
+Ante la necesidad de mantener el contacto en situaciones de emergencia o en operaciones en lugares alejados, la posibilidad de enviar un mensaje de texto desde la cima de una montaña o desde una embarcación artesanal redefine los estándares de conectividad nacional. 
+Como bien ha señalado Entel, el mercado peruano se caracteriza por una alta intensidad en el uso de servicios móviles y una fuerte competencia, lo que exige que la política pública evolucione hacia una regulación tecnológicamente neutral. 
+En lugar de imponer cargas administrativas excesivas sobre tecnologías emergentes, es necesario incentivar la adopción de estas soluciones que garantizan una comunicación resiliente incluso en las condiciones geográficas más adversas del país.
+
+
 \section{Avances, obstáculos y perspectivas futuras en el Perú}
 
 A medida que se consolidan avances técnicos significativos para mejorar la latencia y la eficiencia de los enlaces LEO y GEO, 
@@ -84,10 +99,124 @@ con el objetivo de proyectar escenarios futuros que determinen la verdadera sost
 
 \subsection{PEP y algoritmos TCP BBR en enlaces LEO/GEO rurales}
 
+El estudio del rendimiento en enlaces de alta latencia constituye uno de los temas fundamentales en la ingeniería de redes. 
+Cuando se aplican algoritmos tradicionales como TCP Cubic a un enlace satelital de órbita geoestacionaria (GEO) (por ejemplo, en operaciones mineras en zonas rurales), el rendimiento experimenta un colapso. 
+Esto se debe a las limitaciones impuestas por el Producto Ancho de Banda-Retardo (BDP), el cual determina la cantidad de datos que pueden estar transmitiéndose o "en vuelo" (Sevcik y Wetzel, 2019).
+
+Para mitigar el impacto del BDP y las deficiencias de los algoritmos basados en pérdida (como TCP Cubic), los proveedores de servicios satelitales implementan Proxies de Mejora de Rendimiento (PEP). 
+Un PEP altera el modelo OSI de extremo a extremo al interceptar los paquetes y enviar un acuse de recibo (ACK) simulado y prematuro al equipo de origen (Sevcik y Wetzel, 2019). 
+Posteriormente, el módem almacena los datos en un búfer y los transmite por el enlace satelital usando un protocolo propietario optimizado.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.8\textwidth]{imagenes/PEP1.png}
+    \caption{\small\textit{Esquema de funcionamiento de un PEP en enlaces satelitales LEO/GEO}}
+    \label{fig:PEP1}
+\end{figure}
+
+Desarrollado por Google, el algoritmo BBR (Bottleneck Bandwidth and Round-trip propagation time) representa un cambio de paradigma en el control de congestión. 
+A diferencia de TCP Cubic, BBR no reacciona a la pérdida de paquetes, sino que monitorea de manera constante dos variables: el tiempo real de propagación de ida y vuelta más rápido (RTprop) y el ancho de banda máximo que ha logrado inyectar sin aumentar el RTT (BtlBw).
+En redes satelitales de órbita terrestre baja (LEO, como Starlink), donde la latencia fluctúa rápidamente por el tránsito continuo de los satélites, BBR resulta ideal porque ignora las pérdidas de paquetes atribuibles al clima y ajusta su ventana en función del tiempo real del enlace. 
+Durante su estado de detección de ancho de banda (ProbeBW), el protocolo original BBR utiliza ciclos con coeficientes de ganancia fija (pacing gain) de 1.25 para aumentar la tasa de transmisión y de 0.75 para reducirla y eliminar así las colas acumuladas (Yang et al., 2023).
+
+Para solventar el problema de la equidad entre flujos con distinto RTT, se han desarrollado optimizaciones del algoritmo BBR que descartan los valores fijos de ganancia (1.25 y 0.75) y los reemplazan por modelos matemáticos dinámicos que varían según el estado de utilización del enlace. 
+Además de equilibrar justamente los recursos entre flujos en competencia, esta optimización minimiza la fluctuación del rendimiento (throughput) y mantiene las latencias controladas sin disparar los niveles de pérdida de paquetes (Yang et al., 2023).
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.8\textwidth]{imagenes/tcp.png}
+    \caption{\small\textit{Rendimiento de los protocolos de control de congestión a lo largo del tiempo en enlaces reales.}}
+    \label{fig:tcp1}
+\end{figure}
 
 
 \subsection{Edge Computing en zonas remotas}
+
+En la actual era de la conectividad, el Edge Computing emerge como una solución innovadora que redefine la forma en que se procesa y se analizan los datos. 
+Mejoran aspectos como la reducción de latencia hasta la mejora de la eficiencia en el uso de datos. Existen ventajas y desafíos que esta tecnología introduce en campos como el Internet de las Cosas (IoT), la analítica de datos en tiempo real y la privacidad. 
+El Edge Computing está transformando la conectividad y abriendo nuevas posibilidades para la innovación en un mundo cada vez más interconectado. 
+
+Modelando este escenario a nivel de variables de red, surge un problema clásico de Teoría de Colas. 
+Supongamos que los sensores locales generan datos a una tasa $\lambda$ (llegadas por segundo) y el enlace satelital tiene una tasa de transmisión $\mu$ (salidas por segundo). 
+Si $\lambda > \mu$, el búfer del router se llena, la latencia se dispara y ocurre una pérdida masiva de paquetes.
+El Edge Computing invierte el paradigma: en lugar de enviar grandes volúmenes de datos al centro de cómputo, el procesamiento se traslada al origen o borde de la red, cerca de los dispositivos. 
+Esto introduce una función de inferencia o compresión $f(x)$ ejecutada en un servidor local (como un microcentro de datos perimetral), logrando que la nueva tasa a transmitir sea $\lambda' \ll \mu$ (Garnica Estrada y Guerrero Rincón, 2024).
+
+Por ejemplo, transmitir un flujo de video 4K de una cámara de seguridad consume unos 25 Mbps. 
+Al ejecutar un algoritmo de visión computacional localmente, el servidor no envía el video, sino que realiza un preprocesamiento efectivo y solo transmite los datos relevantes, optimizando el uso del ancho de banda y reduciendo la carga en la red satelital. 
+Adicionalmente, el procesamiento local garantiza que los datos no tengan que salir del perímetro, lo que proporciona un soporte sólido para la privacidad y seguridad de la información.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.7\textwidth]{imagenes/edge.png}
+    \caption{\small\textit{Arquitectura y aplicación del satellite edge computing.}}
+    \label{fig:edgec}
+\end{figure}
+
+La desconexión estructural de la geografía peruana (Andes y Amazonía) ha mantenido a muchas zonas rurales al margen de la economía digital, pero el despliegue de redes satelitales de órbita baja (como Starlink) está revirtiendo esta lógica. 
+La conectividad permite a los agricultores implementar sensores de humedad en el suelo y estaciones meteorológicas locales que analizan variables in situ para detectar plagas tempranamente y optimizar el uso de agua o fertilizantes. 
+Esta transformación basada en datos también democratiza el acceso a precios de mercado en tiempo real, reduce la dependencia de intermediarios y abre las puertas a la inclusión financiera rural mediante pagos electrónicos y microcréditos (Amarillo Cordero, 2026).
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.8\textwidth]{imagenes/sensores.png}
+    \caption{\small\textit{Sensores de humedad y estaciones meteorológicas locales conectadas a la red satelital.}}
+    \label{fig:sensor}
+\end{figure}
+
 \subsection{Análisis energético y térmico de antenas de arreglo en fase a gran altitud}
-\subsection{Diseño y dimensionamiento de sistemas fotovoltaicos para terminales satelitales}
+
+Las antenas de arreglo en fase (como las utilizadas por la red Starlink) no son simples platos reflectores, sino computadoras complejas. 
+Internamente, albergan cientos de amplificadores de bajo ruido (LNA) y desfasadores (phase shifters) empaquetados en una placa plana que genera un calor constante. 
+Al desplegar este hardware en geografías de gran altitud (por encima de los 4,000 m s. n. m., como Cerro de Pasco, Puno o La Oroya), emerge un conflicto termodinámico: el aire es helado, pero su capacidad de enfriamiento es deficiente.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.8\textwidth]{imagenes/antena.png}
+    \caption{\small\textit{Arquitectura de antena de arreglo en fase desplegada en altitud.}}
+    \label{fig:antena}
+\end{figure}
+
+El enfriamiento de estas antenas depende fundamentalmente de la convección natural, donde el calor se transfiere de la carcasa de la antena al aire circundante. 
+Este fenómeno se rige por la Ley de Enfriamiento de Newton:
+
+$$ Q = h \cdot A \cdot (T_{superficie} - T_{ambiente}) $$
+
+Donde $Q$ es la tasa de transferencia de calor, $A$ es el área superficial y $T$ denota las temperaturas. 
+El núcleo del problema radica en el coeficiente de transferencia de calor por convección ($h$), el cual depende directamente de la densidad del aire ($\rho$). 
+A 4,000 m s. n. m., la presión atmosférica se reduce aproximadamente a un 60% de la presión a nivel del mar. 
+Un aire menos denso posee menos moléculas para colisionar contra la antena y disipar el calor. 
+En consecuencia, aunque la temperatura ambiente sea de 0 °C, la antena puede sufrir sobrecalentamiento interno bajo cargas de trabajo pesadas, ya que el aire enrarecido no logra extraer los vatios generados por los circuitos de radiofrecuencia con la rapidez necesaria.
+
+El calor acumulado en los módulos de transmisión/recepción (T/R) provoca la deformación térmica del panel de la antena, alterando la posición milimétrica de sus componentes. 
+En un arreglo en fase, el rendimiento eléctrico y la ganancia del lóbulo principal dependen estrictamente de la fase espacial, la cual se ve distorsionada por este cambio físico estructural; esto rompe la sincronía con la fase interna del arreglo y degrada la estabilidad del enlace electromagnético.
+
+Para mitigar este fenómeno en entornos hostiles e inaccesibles, se implementan algoritmos de software para el control de compensación térmica. 
+Mediante el Método de Elementos Finitos con Parámetros de Influencia Integral (CIPs-FEM), el sistema procesa lecturas de temperatura en tiempo real para predecir la deformación exacta del panel y ajustar de forma inversa los desfasadores (phase shifters), corrigiendo matemáticamente el error de la fase espacial sin necesidad de intervención física en el hardware (Liu et al., 2022).
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.8\textwidth]{imagenes/deformacion.png}
+    \caption{\small\textit{Resultados de la predicción de deformación térmica.}}
+    \label{fig:deformacion}
+\end{figure}
+
+Por otro lado, la altitud conlleva temperaturas de congelación extrema que provocan la acumulación de escarcha o nieve en el radomo (la cubierta de la antena).
+Dado que el hielo bloquea la señal de microondas, las antenas modernas detectan la degradación térmica y activan una función de calentamiento (conocida como Snow Melt mode).
+
 \subsection{Atenuación por lluvia en la selva peruana: Comparativa entre antenas LEO y offset tradicionales}
+
+El clima de la Amazonía peruana, caracterizado por precipitaciones torrenciales que pueden superar los 100 mm/h, constituye uno de los entornos electromagnéticos más hostiles para las telecomunicaciones satelitales debido al fenómeno de atenuación por lluvia (Rain Fade). Este problema físico se produce porque las gotas de agua, cuyos diámetros oscilan entre 1 y 4 mm, poseen un tamaño comparable a la longitud de onda de las señales en banda Ku (~12 GHz) y banda Ka (~28 GHz). Al interactuar con el haz, las gotas absorben y dispersan la energía electromagnética, lo que provoca una caída drástica en la Relación Señal a Ruido ($SNR$). La gravedad de este impacto y la resiliencia del enlace dependen fundamentalmente de la arquitectura de la antena y de la órbita del satélite con el que se comunica.
+
+En las antenas tradicionales tipo Offset asociadas a satélites geoestacionarios (GEO), la mitigación de este fenómeno presenta serias limitaciones debido a su naturaleza estática. Al apuntar de manera inamovible a un punto fijo en el cinturón de Clarke a 35,786 km de distancia, el sistema no tiene capacidad de evadir físicamente las nubes convectivas densas que interceptan su línea de vista, absorbiendo toda la atenuación del trayecto. Además, la geometría cóncava del plato parabólico favorece la acumulación de agua y humedece el brazo del bloque de bajo ruido (LNB), formando una película líquida sobre el alimentador (feedhorn) que continúa absorbiendo microondas y degradando el $SNR$ incluso después de que la tormenta ha cesado.
+
+Por el contrario, las antenas de arreglo en fase empleadas para constelaciones de órbita terrestre baja (LEO) a ~550 km ofrecen una mayor resiliencia gracias a su direccionamiento electrónico del haz (beam steering). Al operar a una altitud drásticamente menor, la pérdida de propagación en el espacio libre ($L_{fspl}$) se reduce significativamente, lo que dota al sistema de un margen de enlace (Link Margin) robusto capaz de tolerar atenuaciones severas de hasta 15 dB que interrumpirían una conexión GEO. Asimismo, la movilidad de los satélites LEO permite realizar una conmutación dinámica (Handover); si una tormenta bloquea la trayectoria actual, el software de la antena redirige instantáneamente el haz hacia un satélite ubicado en una zona despejada del cielo. No obstante, la orientación casi vertical de estos paneles planos propicia la formación de una capa de agua sobre el radomo que distorsiona la fase electromagnética del haz, una vulnerabilidad física que los fabricantes mitigan en las versiones más recientes mediante diseños rectangulares inclinados que fuerzan el drenaje gravitacional.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.6\textwidth]{imagenes/leogeo.png}
+    \caption{\small\textit{Comparativa entre sistemas de antenas LEO y offset tradicionales.}}
+    \label{fig:leogeo}
+\end{figure}
+
 \section{Conclusiones}
