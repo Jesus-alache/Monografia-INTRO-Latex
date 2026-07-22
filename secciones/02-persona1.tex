@@ -24,7 +24,17 @@ El espacial abarca los satélites de comunicaciones y sus sistemas de transmisi�
 
 
 Algunos autores también consideran al de control como cuarto segmento, el cual sería responsable de evaluar las condiciones del satélite y cerciorarse de que mantenga un rendimiento óptimo e intervenir si es que esto no sucede (Kohli, 2025). Está compuesto por los Centros de Operaciones de Red (NOC), especializados en las últimas funciones señaladas, además de la gestión del tráfico en una red satelital; las Estaciones de Telemetría, Seguimiento y Comando (TTC), encargados de la recolección de información sobre factores internos y externos que afecten el estado del satélite, el seguimiento de la órbita en la que se encuentra y la automatización de tareas. 
+\subsubsection{Arquitectura técnica}
+La organización funcional del internet satelital basada en el modelo OSI (Open Systems Interconnection) contempla 4 de las 7 capas estándar que sirven para simplificar y facilitar la comprensión del procesamiento de la información de cualquier red de de comunicaciones, obedeciendo a una concentración de los componentes de hardware y software en la jerarquía (Amazon Web Services, s.f.).  Las capas de dicho modelo son, en orden descendente, la de aplicación, la de presentación, la de sesión, la de transporte, la de red, la de enlace de datos y la física. El motivo de su apilamiento, de acuerdo con China y Goodwin (s.f.), con la séptima en la cima y la primera en la base, responde a la necesidad de ilustrar correctamente el flujo de datos.
+Mientras tanto, el diseño adaptado al internet satelital, provisto a partir de un estudio de China, considera como fundamentales la capa física, puesto que engloba los aparatos requeridos en los procesos de conexión y relacionados, e implica el cumplimiento de determinados parámetros para garantizar la eficiencia en la calidad comunicativa; la de enlace, dado su vínculo con los protocolos respecto a aspectos como escalabilidad, estabilidad y seguridad en la transmisión de datos; la de red, por el dinamismo que exige el mismo funcionamiento del internet satelital al buscar conectar elementos en distintas redes, lo que conlleva al direccionamiento y enrutamiento de los datos, y a la introducción de tecnologías pertinentes para lograr la optimización de la red y gestionar los recursos; la de aplicación, por la interacción con el usuario, para lo cual la implementación de servicios modernos acondicionados según las circunstancias beneficiarán el propio desarrollo del internet satelital (Chen et al., 2024).
+En la siguiente imagen, se visualizan los niveles abstractos mencionados, particularmente diferenciados por color en su estructura interna según los segmentos básicos que conformaban la arquitectura del servicio desde otro enfoque.
 
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.7\textwidth]{imagenes/Arquitecnica.jpg}
+    \caption{\small\textit{Estructura de capas técnicas del internet satelital}}
+    \label{fig:Arquitecnica}
+\end{figure}
 
 \subsection{ Importancia de la latencia como factor de rendimiento}
 
