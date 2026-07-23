@@ -11,12 +11,38 @@
 \setlength{\parindent}{1.27cm}
 \usepackage{xurl} 
 \usepackage[hidelinks]{hyperref}
+\usepackage{titlesec}
+\usepackage{changepage}
+\usepackage[round]{natbib} 
+\usepackage{float}
+
+\titleformat{\section}[block]
+  {\normalfont\normalsize\bfseries\filcenter}
+  {\thesection.}
+  {1em}
+  {}
+\titlespacing{\section}{0cm}{12pt}{6pt}
+
+\titleformat{\subsection}[block]
+  {\normalfont\normalsize\bfseries}
+  {\thesubsection.}
+  {1em}
+  {}
+\titlespacing{\subsection}{0cm}{12pt}{6pt}
+
+\titleformat{\subsubsection}[block]
+  {\normalfont\normalsize\bfseries\itshape} 
+  {\thesubsubsection.}
+  {1em}
+  {}
+\titlespacing{\subsubsection}{0cm}{12pt}{6pt}
 
 \begin{document}
 
+
 % LLAMADA A LOS SUBARCHIVOS
 \input{secciones/01-portada-indice}
-\input{secciones/02-introduccion}
+%\input{secciones/02-introduccion}
 \input{secciones/02-persona1}
 \input{secciones/03-persona2}
 \input{secciones/04-persona3}
@@ -24,7 +50,14 @@
 \input{secciones/06-conclusiones}
 
 % BIBLIOGRAFÍA
-%\bibliographystyle{apalike} % estilo visual de las referencias
-%\bibliography{referencias}  % Llama a referencias.bib
+\global\leftskip=0cm 
+\renewcommand{\refname}{Referencias Bibliográficas} 
+\nocite{*} 
+\begingroup
+\urlstyle{same} 
+\small 
+\bibliographystyle{apalike} 
+\bibliography{referencias} % Llama archivo .bib 
+\endgroup
 
 \end{document}

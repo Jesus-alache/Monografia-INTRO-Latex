@@ -10,7 +10,7 @@ Para dimensionar la magnitud actual de la brecha digital y el estado de las tele
 De acuerdo con los reportes oficiales emitidos por el Instituto Nacional de Estadística e Informática (INEI) durante el 2025, se evidencia el estado real de la infraestructura de red a nivel nacional. 
 Tal como se detalla en la Figura 9, la proporción de conectividad en zonas rurales frente a las urbanas refleja una diferencia significativa que pueden posicionar al internet satelital como solución.
 
-\begin{figure}[ht]
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.7\textwidth]{imagenes/brecha1.png}
     \caption{\small\textit{Hogares con acceso a Computadora e Internet, por área de residencia (2025)}}
@@ -20,13 +20,13 @@ Tal como se detalla en la Figura 9, la proporción de conectividad en zonas rura
 Según los reportes del Instituto Nacional de Estadística e Informática (INEI), existe una disparidad estructural en el acceso a la red que está directamente condicionada por la geografía. 
 Tal como se detalla en la Figura 10, al evaluar a la población de 6 y más años de edad que hace uso de internet, se evidencian contrastes críticos entre la capital y las zonas alejadas del país. 
 
-\begin{figure}[ht]
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.8\textwidth]{imagenes/brecha2.png}
     \caption{\small\textit{Población de 6 y más años de edad que hace uso de Internet, por área de residencia (2025)}}
     \label{fig:brecha_digital2}
 \end{figure}
-\newpage
+
 \section{Marco legal peruano}
 
 El marco jurídico peruano ha priorizado la reducción de la brecha digital mediante reformas de rango constitucional y legal. 
@@ -68,7 +68,7 @@ Si se requiere movilidad, el plan Itinerante cuenta con dos variantes: una opci�
 Para necesidades profesionales, la categoría Empresas brinda opciones de Prioridad Local (S/ 125 a S/ 1,208) y Prioridad Global (S/ 990 a S/ 8,514), 
 las cuales incluyen IP pública, panel de gestión y un acuerdo de nivel de servicio (SLA) para garantizar mayor estabilidad en proyectos de alta demanda.
 
-\begin{figure}[ht]
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{imagenes/planes.png}
     \caption{\small\textit{Costos de los planes de conectividad de Starlink (2025)}}
@@ -107,7 +107,7 @@ Para mitigar el impacto del BDP y las deficiencias de los algoritmos basados en 
 Un PEP altera el modelo OSI de extremo a extremo al interceptar los paquetes y enviar un acuse de recibo (ACK) simulado y prematuro al equipo de origen (Sevcik y Wetzel, 2019). 
 Posteriormente, el módem almacena los datos en un búfer y los transmite por el enlace satelital usando un protocolo propietario optimizado.
 
-\begin{figure}[ht]
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.8\textwidth]{imagenes/PEP1.png}
     \caption{\small\textit{Esquema de funcionamiento de un PEP en enlaces satelitales LEO/GEO}}
@@ -122,7 +122,7 @@ Durante su estado de detección de ancho de banda (ProbeBW), el protocolo origin
 Para solventar el problema de la equidad entre flujos con distinto RTT, se han desarrollado optimizaciones del algoritmo BBR que descartan los valores fijos de ganancia (1.25 y 0.75) y los reemplazan por modelos matemáticos dinámicos que varían según el estado de utilización del enlace. 
 Además de equilibrar justamente los recursos entre flujos en competencia, esta optimización minimiza la fluctuación del rendimiento (throughput) y mantiene las latencias controladas sin disparar los niveles de pérdida de paquetes (Yang et al., 2023).
 
-\begin{figure}[ht]
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.8\textwidth]{imagenes/tcp.png}
     \caption{\small\textit{Rendimiento de los protocolos de control de congestión a lo largo del tiempo en enlaces reales.}}
@@ -146,7 +146,7 @@ Por ejemplo, transmitir un flujo de video 4K de una cámara de seguridad consume
 Al ejecutar un algoritmo de visión computacional localmente, el servidor no envía el video, sino que realiza un preprocesamiento efectivo y solo transmite los datos relevantes, optimizando el uso del ancho de banda y reduciendo la carga en la red satelital. 
 Adicionalmente, el procesamiento local garantiza que los datos no tengan que salir del perímetro, lo que proporciona un soporte sólido para la privacidad y seguridad de la información.
 
-\begin{figure}[ht]
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.7\textwidth]{imagenes/edge.png}
     \caption{\small\textit{Arquitectura y aplicación del satellite edge computing.}}
@@ -157,9 +157,9 @@ La desconexión estructural de la geografía peruana (Andes y Amazonía) ha mant
 La conectividad permite a los agricultores implementar sensores de humedad en el suelo y estaciones meteorológicas locales que analizan variables in situ para detectar plagas tempranamente y optimizar el uso de agua o fertilizantes. 
 Esta transformación basada en datos también democratiza el acceso a precios de mercado en tiempo real, reduce la dependencia de intermediarios y abre las puertas a la inclusión financiera rural mediante pagos electrónicos y microcréditos (Amarillo Cordero, 2026).
 
-\begin{figure}[ht]
+\begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\textwidth]{imagenes/sensores.png}
+    \includegraphics[width=0.65\textwidth]{imagenes/sensores.png}
     \caption{\small\textit{Sensores de humedad y estaciones meteorológicas locales conectadas a la red satelital.}}
     \label{fig:sensor}
 \end{figure}
@@ -170,9 +170,9 @@ Las antenas de arreglo en fase (como las utilizadas por la red Starlink) no son 
 Internamente, albergan cientos de amplificadores de bajo ruido (LNA) y desfasadores (phase shifters) empaquetados en una placa plana que genera un calor constante. 
 Al desplegar este hardware en geografías de gran altitud (por encima de los 4,000 m s. n. m., como Cerro de Pasco, Puno o La Oroya), emerge un conflicto termodinámico: el aire es helado, pero su capacidad de enfriamiento es deficiente.
 
-\begin{figure}[ht]
+\begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\textwidth]{imagenes/antena.png}
+    \includegraphics[width=0.7\textwidth]{imagenes/antena.png}
     \caption{\small\textit{Arquitectura de antena de arreglo en fase desplegada en altitud.}}
     \label{fig:antena}
 \end{figure}
@@ -194,7 +194,7 @@ En un arreglo en fase, el rendimiento eléctrico y la ganancia del lóbulo princ
 Para mitigar este fenómeno en entornos hostiles e inaccesibles, se implementan algoritmos de software para el control de compensación térmica. 
 Mediante el Método de Elementos Finitos con Parámetros de Influencia Integral (CIPs-FEM), el sistema procesa lecturas de temperatura en tiempo real para predecir la deformación exacta del panel y ajustar de forma inversa los desfasadores (phase shifters), corrigiendo matemáticamente el error de la fase espacial sin necesidad de intervención física en el hardware (Liu et al., 2022).
 
-\begin{figure}[ht]
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.8\textwidth]{imagenes/deformacion.png}
     \caption{\small\textit{Resultados de la predicción de deformación térmica.}}
@@ -212,17 +212,10 @@ En las antenas tradicionales tipo Offset asociadas a satélites geoestacionarios
 
 Por el contrario, las antenas de arreglo en fase empleadas para constelaciones de órbita terrestre baja (LEO) a ~550 km ofrecen una mayor resiliencia gracias a su direccionamiento electrónico del haz (beam steering). Al operar a una altitud drásticamente menor, la pérdida de propagación en el espacio libre ($L_{fspl}$) se reduce significativamente, lo que dota al sistema de un margen de enlace (Link Margin) robusto capaz de tolerar atenuaciones severas de hasta 15 dB que interrumpirían una conexión GEO. Asimismo, la movilidad de los satélites LEO permite realizar una conmutación dinámica (Handover); si una tormenta bloquea la trayectoria actual, el software de la antena redirige instantáneamente el haz hacia un satélite ubicado en una zona despejada del cielo. No obstante, la orientación casi vertical de estos paneles planos propicia la formación de una capa de agua sobre el radomo que distorsiona la fase electromagnética del haz, una vulnerabilidad física que los fabricantes mitigan en las versiones más recientes mediante diseños rectangulares inclinados que fuerzan el drenaje gravitacional.
 
-\begin{figure}[ht]
+\begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{imagenes/leogeo.png}
+    \includegraphics[width=0.4\textwidth]{imagenes/leogeo.png}
     \caption{\small\textit{Comparativa entre sistemas de antenas LEO y offset tradicionales.}}
     \label{fig:leogeo}
 \end{figure}
 
-\section{Conclusiones}
-El desarrollo y la expansión del internet satelital representan una transformación estructural en las telecomunicaciones globales, pasando de ser una tecnología de nicho para zonas rurales a convertirse en un pilar estratégico de la economía y la geopolítica contemporánea. 
-La transición de los sistemas tradicionales en órbita geoestacionaria (GEO) hacia las megaconstelaciones en órbita terrestre baja (LEO), lideradas por iniciativas privadas y estatales como Starlink, Kuiper, Guowang e IRIS\textsuperscript{2}, ha permitido reducir drásticamente la latencia y aumentar el ancho de banda, democratizando el acceso a redes de alta velocidad.
-Sin embargo, esta carrera tecnológica ha desencadenado una intensa competencia entre potencias globales como Estados Unidos, China y la Unión Europea, evidenciando una creciente militarización del espacio y la utilización de estas infraestructuras comerciales con fines de defensa y seguridad nacional. 
-En este sentido, la soberanía digital y el control de las telecomunicaciones espaciales se han erigido como factores determinantes en la reconfiguración del poder geopolítico del siglo XXI.Por otro lado, el despliegue masivo de estas constelaciones satelitales plantea desafíos apremiantes en materia ambiental y regulatoria que exigen una respuesta multilateral coordinada. 
-La proliferación de basura espacial y el riesgo del síndrome de Kessler, sumados a la contaminación lumínica que afecta la observación astronómica y a las emisiones atmosféricas derivadas de los lanzamientos y reentradas, revelan un vacío legal en el derecho espacial internacional, el cual aún opera bajo tratados obsoletos de la Guerra Fría. 
-Paralelamente, en contextos geográficos complejos como el de Perú, el internet satelital emerge como una solución insustituible para cerrar la histórica brecha digital en la Amazonía y los Andes. No obstante, su implementación exitosa requiere superar barreras técnicas locales, tales como la atenuación por lluvia intensa en la selva y las limitaciones de disipación térmica de las antenas a gran altitud. En consecuencia, el futuro de esta tecnología dependerá de la capacidad global para equilibrar la innovación y la conectividad universal con la sostenibilidad ambiental y una gobernanza espacial equitativa.
